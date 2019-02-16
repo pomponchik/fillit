@@ -12,4 +12,10 @@ int letter_prove(char *str)
   return (1);
 }
 
-ft_lst_iter(lst)
+//ft_lst_iter(lst)
+
+int main()
+{
+  printf("%d", letter_prove("...."));
+  return 0;
+}
