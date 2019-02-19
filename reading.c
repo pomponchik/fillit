@@ -51,7 +51,9 @@ t_list *ft_lst_reverse(t_list *begin)
     {
       end = end->next;
     }
-    begin = lst_reverse_helper(begin, end);
+    if (end != temp_begin)
+      begin = lst_reverse_helper(begin, end);
+    return (begin);
   }
 
 }
