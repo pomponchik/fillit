@@ -53,6 +53,17 @@ t_list *ft_lst_reverse(t_list *begin)
     }
     begin = lst_reverse_helper(begin, end);
   }
+
+}
+
+void ft_lst_putstr(t_list *lst)
+{
+  while (lst)
+  {
+    ft_putstr(lst->content);
+    ft_putstr("\n");
+    lst = lst->next;
+  }
 }
 
 t_etra *reader(int fd)
