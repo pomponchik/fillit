@@ -1,83 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reading.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/19 21:47:18 by ahalmon-          #+#    #+#             */
+/*   Updated: 2019/02/19 21:47:20 by ahalmon-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "head.h"
 #include <stdio.h>
 
-int letter_prove(char *str)
-{
-  while(*str)
-  {
-    if (*str == '.' || *str == '#')
-      str++;
-    else
-      return (0);
-  }
-  return (1);
-}
 
-void ft_lst_free_chain(t_list *chain)
-{
-  t_list *temp;
 
-  while (chain)
-  {
-    temp = chain->next;
-    free(chain->content);
-    free(chain);
-    chain = temp;
-  }
-}
 
-t_list *lst_reverse_helper(t_list *begin, t_list *end)
-{
-  end->next = begin;
-  while (begin)
-  {
-    if (begin->next == end)
-      break ;
-    begin = begin->next;
-  }
-  begin->next = NULL;
-  return (end);
-}
 
-t_list *ft_lst_reverse(t_list *begin)
-{
-  t_list *temp_begin;
-  t_list *end;
-
-  temp_begin = begin;
-  while (end != temp_begin)
-  {
-    end = begin;
-    while (end->next)
-    {
-      end = end->next;
-    }
-    if (end != temp_begin)
-      begin = lst_reverse_helper(begin, end);
-    return (begin);
-  }
-
-}
-
-void ft_lst_putstr(t_list *lst)
-{
-  while (lst)
-  {
-    ft_putstr(lst->content);
-    ft_putstr("\n");
-    lst = lst->next;
-  }
-}
-
-t_etra *reader(int fd)
+t_list *reader(int fd)
 {
   char *line;
   int r;
   int count;
-  t_list *temp;
-  t_list *temp_res;
+  t_list *lst;
+  t_list *lst_chain;
 
   count = 0;
   line = NULL;
+  lst_chain = NULL;
   while ((r = get_next_line(fd, char &line)))
   {
     if (line && !ft_strlen(line))
@@ -87,8 +37,8 @@ t_etra *reader(int fd)
     }
     else if (line && ft_strlen(line))
     {
-      temp = ft_lstnew(line, ft_strlen(line));
-      temp_res = ft_lstadd(lst, temp);
+      lst = ft_lstnew(line, ft_strlen(line));
+      ft_lstadd(&lst_chain, lst);
     }
   }
 }
