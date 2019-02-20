@@ -56,13 +56,19 @@ static int	width_and_height_lst_prove(t_list *lst) //проверка, что с
 	if (!lst)
 		return (0);
 	height_counter = 0;
+	// printf("width 1\n");
 	while (lst)
 	{
+		// printf("width 2\n");
 		width_counter = ft_strlen(lst->content);
-		if (width_counter != 4 || height_counter >= 4)
+		//printf("width 3, counter = %d, <str = %s>\n", (int)width_counter, (char *)(lst->content));
+		if (width_counter != 4 || height_counter >= 5)
 			return (0);
+		// printf("width 4\n");
 		height_counter++;
+		// printf("width 5\n");
 		lst = lst->next;
+		// printf("width 6\n");
 	}
 	return (1);
 }
@@ -71,8 +77,8 @@ int			proves(t_list *chain)
 {
 	if (!width_and_height_lst_prove(chain))
 		return (0);
-	if (!number_lattice_prove(chain))
-		return (0);
+	// if (!number_lattice_prove(chain))
+	// 	return (0);
 	if (!letters_prove(chain))
 		return (0);
 	if (!links_prove(chain))

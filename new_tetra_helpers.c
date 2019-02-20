@@ -43,6 +43,7 @@ t_etra		*create_tetra(size_t x, size_t y)
 		return (NULL);
 	}
 	(new->str)[y] = NULL;
+	index = 0;
 	while (index != y)
 	{
 		if (!((new->str)[index] = ft_strnew(x + 1)))
@@ -54,4 +55,27 @@ t_etra		*create_tetra(size_t x, size_t y)
 		index++;
 	}
 	return (new);
+}
+
+t_etra		*add_tetra(t_etra *new, t_etra *old)
+{
+	t_etra *end;
+
+	end = old;
+	if (!old)
+	{
+		// printf("add\n");
+		return (new);
+	}
+	while (end)
+	{
+		// printf("add\n");
+		if (!end->next)
+			break ;
+		// printf("add\n");
+		end = end->next;
+	}
+	// printf("add\n");
+	end->next = new;
+	return (old);
 }
