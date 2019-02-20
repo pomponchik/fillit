@@ -77,8 +77,8 @@ int			proves(t_list *chain)
 {
 	if (!width_and_height_lst_prove(chain))
 		return (0);
-	// if (!number_lattice_prove(chain))
-	// 	return (0);
+	if (!number_lattice_prove(chain))
+		return (0);
 	if (!letters_prove(chain))
 		return (0);
 	if (!links_prove(chain))

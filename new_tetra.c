@@ -66,6 +66,27 @@ void print_size_t(size_t *i)
 	printf("\n");
 }
 
+int tetra_indent(size_t *arr)
+{
+	int index;
+
+	index = 0;
+	while (!arr[index])
+		index++;
+	return (index);
+}
+
+void priuuu(char **str)
+{
+	int index = 0;
+
+	while (str[index])
+	{
+		printf("%s\n", str[index]);
+		index++;
+	}
+}
+
 static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 {
 	size_t		index_y;
@@ -83,28 +104,50 @@ ft_lst_putendl(lst);
 printf("\n");
 print_size_t(x_s);
 print_size_t(y_s);
-while (index_y != 4)
+
+while (lst)
 {
 	if (y_s[index_y])
 	{
 		index_x = 0;
-
-		while (index_x != 4)
+		while (index_x < 4)
 		{
-			x_count = 0;
 			if (x_s[index_x])
-			{
-				stri[y_count][x_count] = ((char *)(lst->content))[index_x];
-				x_count++;
-			}
+				stri[y_count][index_x - tetra_indent(x_s)] = ((char *)(lst->content))[index_x];
 			index_x++;
 		}
 		y_count++;
-		lst=lst->next;
 	}
 	index_y++;
+	lst = lst->next;
 }
+priuuu(stri);
 
+
+//
+//
+// while (index_y != 4)
+// {
+// 	if (y_s[index_y])
+// 	{
+// 		index_x = 0;
+//
+// 		while (index_x != 4)
+// 		{
+// 			x_count = 0;
+// 			if (x_s[index_x])
+// 			{
+// 				stri[y_count][x_count] = ((char *)(lst->content))[index_x];
+// 				x_count++;
+// 			}
+// 			index_x++;
+// 		}
+// 		y_count++;
+// 		lst=lst->next;
+// 	}
+// 	index_y++;
+// }
+//
 
 
 
@@ -137,7 +180,7 @@ while (index_y != 4)
 	// 	lst = lst->next;
 	// }
 	printf("result\n");
-	ft_print_two_dimensional_array(new->str);
+	//ft_print_two_dimensional_array(new->str);
 }
 
 t_etra			*new_tetra(t_list *lst)

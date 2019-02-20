@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 		if (!((chain->str)[0]))
 			printf("HHH\n");
 		//printf("str = %d\n", (int)ft_strlen((chain->str)[0]));
-		ft_print_two_dimensional_array(chain->str);
+		//ft_print_two_dimensional_array(chain->str);
 		chain = chain->next;
 	}
 	return 0;
