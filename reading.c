@@ -24,6 +24,39 @@ void priuuu(char **str)
 	}
 }
 
+void paint_symb(char **figure, char letter)
+{
+	char **y;
+	char *x;
+
+	y = figure;
+	while (*y)
+	{
+		x = y[0];
+		while (*x)
+		{
+			if (*x == '#')
+				*x = letter;
+			x++;
+		}
+		y++;
+	}
+}
+
+void letters_painter(t_etra		*tets)
+{
+	char letter;
+
+	letter = 'A';
+	while (tets)
+	{
+		paint_symb(tets->str, letter);
+		tets->letter = letter;
+		letter++;
+		tets = tets->next;
+	}
+}
+
 t_etra *reader(int fd)
 {
   char *line;
@@ -74,6 +107,7 @@ int main(int argc, char **argv)
 	t_etra *chain;
 	int fd = open(argv[1], O_RDONLY);
 	chain = reader(fd);
+	letters_painter(chain);
 	if (!chain)
 		printf("\nnot read\n");
 	while (chain)

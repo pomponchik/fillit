@@ -84,33 +84,25 @@ static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 	size_t x_count;
 	size_t y_count;
 
-	index_y = 0; //new_tetra_number(x_s)
+	index_y = 0;
 	y_count = 0;
-	//printf("tetra_copy 1\n");
 	stri = new->str;
-	//printf("tetra_copy 2\n");
-//ft_lst_putendl(lst);
-//printf("\n");
-//print_size_t(x_s);
-//print_size_t(y_s);
-
-while (lst)
-{
-	if (y_s[index_y])
+	while (lst)
 	{
-		index_x = 0;
-		while (index_x < 4)
+		if (y_s[index_y])
 		{
-			if (x_s[index_x])
-				stri[y_count][index_x - tetra_indent(x_s)] = ((char *)(lst->content))[index_x];
-			index_x++;
+			index_x = 0;
+			while (index_x < 4)
+			{
+				if (x_s[index_x])
+					stri[y_count][index_x - tetra_indent(x_s)] = ((char *)(lst->content))[index_x];
+				index_x++;
+			}
+			y_count++;
 		}
-		y_count++;
+		index_y++;
+		lst = lst->next;
 	}
-	index_y++;
-	lst = lst->next;
-}
-//priuuu(stri);
 
 
 //
