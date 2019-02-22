@@ -76,17 +76,6 @@ int tetra_indent(size_t *arr)
 	return (index);
 }
 
-void priuuu(char **str)
-{
-	int index = 0;
-
-	while (str[index])
-	{
-		printf("%s\n", str[index]);
-		index++;
-	}
-}
-
 static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 {
 	size_t		index_y;
@@ -100,10 +89,10 @@ static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 	//printf("tetra_copy 1\n");
 	stri = new->str;
 	//printf("tetra_copy 2\n");
-ft_lst_putendl(lst);
-printf("\n");
-print_size_t(x_s);
-print_size_t(y_s);
+//ft_lst_putendl(lst);
+//printf("\n");
+//print_size_t(x_s);
+//print_size_t(y_s);
 
 while (lst)
 {
@@ -121,7 +110,7 @@ while (lst)
 	index_y++;
 	lst = lst->next;
 }
-priuuu(stri);
+//priuuu(stri);
 
 
 //
@@ -179,7 +168,6 @@ priuuu(stri);
 	// 	index_y++;
 	// 	lst = lst->next;
 	// }
-	printf("result\n");
 	//ft_print_two_dimensional_array(new->str);
 }
 

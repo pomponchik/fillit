@@ -63,19 +63,13 @@ t_etra		*add_tetra(t_etra *new, t_etra *old)
 
 	end = old;
 	if (!old)
-	{
-		// printf("add\n");
 		return (new);
-	}
 	while (end)
 	{
-		// printf("add\n");
 		if (!end->next)
 			break ;
-		// printf("add\n");
 		end = end->next;
 	}
-	// printf("add\n");
 	end->next = new;
 	return (old);
 }

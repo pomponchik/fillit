@@ -26,32 +26,17 @@ static int	links_prove_helper(t_list *lst, size_t x, size_t y)
 {
 	size_t	count;
 
-	//printf("lph, x = %d, y = %d\n", (int)x, (int)y);
 	count = 0;
 	if (y)
 		count += str_links_prove(ft_lstsearch_index(lst, (y - 1)), x);
-	// printf("ou1\n");
 	if (y != 3)
-	{
-		// printf("count = %d, x = %d, y = %d\n", (int)count, (int)x, (int)y + 1);
-		//
-		// t_list *temp = ft_lstsearch_index(lst, (y + 1));
-		// if (!(temp))
-		// 	printf("taks\n");
-		// printf("ok, str = %s\n", (char *)(temp->content));
 		count += str_links_prove(ft_lstsearch_index(lst, (y + 1)), x);
-
-	}
-	//printf("ou2\n");
 	if (x)
 		count += str_links_prove(ft_lstsearch_index(lst, y), (x - 1));
-	// printf("ou3\n");
 	if (x != 3)
 		count += str_links_prove(ft_lstsearch_index(lst, y), (x + 1));
-	// printf("ou4\n");
 	if (count)
 		return (1);
-	// printf("ou\n");
 	return (0);
 }
 
@@ -71,17 +56,12 @@ int			links_prove(t_list *lst)
 			if (((char *)(temp->content))[x] == '#')
 			{
 				if (!links_prove_helper(lst, x, y))
-				{
 					return (0);
-				}
 			}
 			x++;
 		}
 		y++;
-		// printf("end, y = %d\n", (int)y);
 		temp = temp->next;
-		// if (!temp)
-		// 	printf("error\n");
 	}
 	return (1);
 }
