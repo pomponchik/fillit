@@ -12,6 +12,8 @@
 
 #include "head.h"
 
+int i = 0;
+
 static void		horizontal_lst_check(t_list *lst, size_t *y_s)
 {
 	size_t		index;
@@ -60,10 +62,10 @@ void print_size_t(size_t *i)
 	index = 0;
 	while (index != 4)
 	{
-		printf("%lu", i[index]);
+		//printf("%lu", i[index]);
 		index++;
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 int tetra_indent(size_t *arr)
@@ -165,16 +167,29 @@ static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 
 t_etra			*new_tetra(t_list *lst)
 {
+	// ft_lst_putendl(lst);
+printf("new tetra %d\n", i++);
 	t_etra		*new;
 	size_t		x_s[4];
 	size_t		y_s[4];
+	extern int i;
 
 	if (!proves(lst))
 		return (NULL);
 	new_tetra_count_lines(lst, x_s, y_s);
+
+	printf("x: %lu%lu%lu%lu, y: %lu%lu%lu%lu\n", x_s[0], x_s[1], x_s[2], x_s[3], y_s[0], y_s[1], y_s[2], y_s[3]);
+	printf("\n");
 	if (!(new = create_tetra(new_tetra_number(x_s), new_tetra_number(y_s))))
 		return (NULL);
 	tetra_copy(new, x_s, y_s, lst);
 	new->next = NULL;
+	if (!new)
+		printf("no, sorry\n");
+	if (!ft_strlen((new->str)[0]))
+		printf("no, sorry 2\n");
+	priuuu(new->str);
+	printf("len: %lu", ft_strlen((new->str)[0]));
+	printf("\n");
 	return (new);
 }

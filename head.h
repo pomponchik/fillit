@@ -29,3 +29,11 @@ t_etra *new_tetra(t_list *chain);
 size_t		new_tetra_number(size_t *s);
 t_etra		*create_tetra(size_t x, size_t y);
 t_etra		*add_tetra(t_etra *new, t_etra *old);
+void worker(char **map, t_etra	*tets);
+char **new_map(t_etra *tets);
+
+
+
+
+
+void priuuu(char **str); //убрать

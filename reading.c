@@ -76,7 +76,9 @@ t_etra *reader(int fd)
   {
     if (line && !ft_strlen(line))
     {
+					//printf("now\n");
 					lst_chain = ft_lst_turn(lst_chain);
+
 					new = new_tetra(lst_chain);
 					new_chain = add_tetra(new, new_chain);
      count = 0;
@@ -110,6 +112,12 @@ int main(int argc, char **argv)
 	letters_painter(chain);
 	if (!chain)
 		printf("\nnot read\n");
+	char **popop = new_map(chain);
+
+	printf("\n_________________________________________________\n");
+	worker(popop, chain);
+	priuuu(popop);
+	printf("\n_________________________________________________\n");
 	while (chain)
 	{
 		priuuu(chain->str);

@@ -27,6 +27,7 @@ static int	links_prove_helper(t_list *lst, size_t x, size_t y)
 	size_t	count;
 
 	count = 0;
+	printf("x: %lu, y: %lu\n", x, y);
 	if (y)
 		count += str_links_prove(ft_lstsearch_index(lst, (y - 1)), x);
 	if (y != 3)
