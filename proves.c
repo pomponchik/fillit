@@ -12,7 +12,7 @@
 
 #include "head.h"
 
-static int	letters_prove(t_list *lst) //проверка, что в тетраминках только нужные символы
+static int	letters_prove(t_list *lst)
 {
 	char	*str;
 	size_t	index;
@@ -33,7 +33,7 @@ static int	letters_prove(t_list *lst) //проверка, что в тетрам
 	return (1);
 }
 
-static int	number_lattice_prove(t_list *lst) //проверка, что количество решеток равно 4
+static int	number_lattice_prove(t_list *lst)
 {
 	size_t index;
 
@@ -48,7 +48,7 @@ static int	number_lattice_prove(t_list *lst) //проверка, что коли
 	return (1);
 }
 
-static int	width_and_height_lst_prove(t_list *lst) //проверка, что считанное поле тетраминки ровно 4х4
+static int	width_and_height_lst_prove(t_list *lst)
 {
 	size_t	width_counter;
 	size_t	height_counter;

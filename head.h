@@ -31,6 +31,14 @@ typedef struct			s_puter
 	size_t				size;
 }						t_put;
 
+typedef struct			s_try
+{
+	char		**figure;
+	char		*line;
+	size_t		ys;
+	size_t		xs;
+}						t_try;
+
 int						links_prove(t_list *lst);
 int						proves(t_list *chain);
 t_etra					*new_tetra(t_list *chain);
@@ -41,5 +49,8 @@ t_etra					*add_tetra(t_etra *new, t_etra *old);
 void					worker(char **map, t_etra	*tets);
 char					**new_map(t_etra *tets);
 void					out(char **map);
+int t_in(size_t *arr);
+int search_not_dot(char *str);
+size_t len_without_dot(char *str);
 
 #endif

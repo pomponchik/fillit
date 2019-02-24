@@ -6,11 +6,21 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 06:58:55 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/20 07:16:40 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 06:23:26 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+int t_in(size_t *arr)
+{
+	int index;
+
+	index = 0;
+	while (!arr[index])
+		index++;
+	return (index);
+}
 
 size_t		new_tetra_number(size_t *s)
 {
@@ -59,7 +69,7 @@ t_etra		*create_tetra(size_t x, size_t y)
 
 t_etra		*add_tetra(t_etra *new, t_etra *old)
 {
-	t_etra *end;
+	t_etra	*end;
 
 	end = old;
 	if (!old)

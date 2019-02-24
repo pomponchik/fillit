@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 01:09:24 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/20 08:50:44 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 06:26:08 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,38 +53,28 @@ static void		new_tetra_count_lines(t_list *lst, size_t *x_s, size_t *y_s)
 	horizontal_lst_check(lst, y_s);
 }
 
-int tetra_indent(size_t *arr)
-{
-	int index;
-
-	index = 0;
-	while (!arr[index])
-		index++;
-	return (index);
-}
-
 static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 {
 	size_t		index_y;
-	size_t		index_x;
-	char		**stri;
-	size_t y_count;
+	size_t		i_x;
+	char		**st;
+	size_t		y_c;
 
 	index_y = 0;
-	y_count = 0;
-	stri = new->str;
+	y_c = 0;
+	st = new->str;
 	while (lst)
 	{
 		if (y_s[index_y])
 		{
-			index_x = 0;
-			while (index_x < 4)
+			i_x = 0;
+			while (i_x < 4)
 			{
-				if (x_s[index_x])
-					stri[y_count][index_x - tetra_indent(x_s)] = ((char *)(lst->content))[index_x];
-				index_x++;
+				if (x_s[i_x])
+					st[y_c][i_x - t_in(x_s)] = ((char *)(lst->content))[i_x];
+				i_x++;
 			}
-			y_count++;
+			y_c++;
 		}
 		index_y++;
 		lst = lst->next;

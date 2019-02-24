@@ -6,15 +6,15 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 21:01:29 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/22 21:01:32 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 06:22:44 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static size_t ft_math_degree_size_t(size_t num, size_t index)
+static size_t	ft_math_degree_size_t(size_t num, size_t index)
 {
-	size_t num_temp;
+	size_t		num_temp;
 
 	if (!index)
 		return (1);
@@ -30,10 +30,10 @@ static size_t ft_math_degree_size_t(size_t num, size_t index)
 	return (num);
 }
 
-static size_t size_edge(t_etra *tets)
+static size_t	size_edge(t_etra *tets)
 {
-	size_t count;
-	size_t edge;
+	size_t		count;
+	size_t		edge;
 
 	count = 0;
 	while (tets)
@@ -47,10 +47,10 @@ static size_t size_edge(t_etra *tets)
 	return (edge);
 }
 
-static char **x_generate(char **y, size_t edge)
+static char		**x_generate(char **y, size_t edge)
 {
-	size_t index;
-	size_t width;
+	size_t		index;
+	size_t		width;
 
 	index = 0;
 	width = edge;
@@ -66,10 +66,10 @@ static char **x_generate(char **y, size_t edge)
 	return (y);
 }
 
-char **new_map(t_etra *tets)
+char			**new_map(t_etra *tets)
 {
-	size_t edge;
-	char **y;
+	size_t		edge;
+	char		**y;
 
 	edge = size_edge(tets) + 1;
 	if (!(y = (char **)malloc((edge + 1) * (sizeof(char *)))))

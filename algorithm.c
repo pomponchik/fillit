@@ -6,14 +6,15 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 22:43:13 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 04:38:06 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 06:20:23 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int		square_prove(t_put squad, t_etra *tet)
+static int		square_prove(t_put squad, t_etra *tet, size_t *i)
 {
+	*i = 0;
 	if (squad.size < squad.x + tet->width + 1)
 		return (0);
 	if (squad.size < squad.y + tet->height + 1)
@@ -46,39 +47,31 @@ static void		clear_square(char **map, t_etra *tets, t_put put)
 	}
 }
 
-char *double_increment(size_t *i, char **str)
-{
-	*i++;
-	*str++;
-	return(str[*i]);
-}
-
 static int		try_to_put(char **map, t_etra *tets, t_put put)
 {
-	char		*line;
-	size_t		ys;
-	size_t		xs;
+	t_try		i;
 
-	if (!square_prove(put, tets))
+	if (!square_prove(put, tets, &(i.ys)))
 		return (0);
-	ys = 0;
-	while (*((char **)(tets->str)))
+	i.figure = tets->str;
+	while (*(i.figure))
 	{
-		line = *((char **)(tets->str));
-		xs = 0;
-		while (*line)
+		i.line = *(i.figure);
+		i.xs = 0;
+		while (*(i.line))
 		{
-			if (*line != '.' && map[put.y + ys][put.x + xs] == '.')
-				map[put.y + ys][put.x + xs] = tets->letter;
-			else if (*line != '.' && map[put.y + ys][put.x + xs] != '.')
+			if (*(i.line) != '.' && map[put.y + i.ys][put.x + i.xs] == '.')
+				map[put.y + i.ys][put.x + i.xs] = tets->letter;
+			else if (*(i.line) != '.' && map[put.y + i.ys][put.x + i.xs] != '.')
 			{
 				clear_square(map, tets, put);
 				return (0);
 			}
-			double_increment(&xs, &line);
+			i.xs++;
+			(i.line)++;
 		}
-		ys++;
-		(char **)(tets->str)++;
+		i.ys++;
+		(i.figure)++;
 	}
 	return (1);
 }
