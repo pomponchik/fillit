@@ -12,7 +12,7 @@
 
 #include "head.h"
 
-void paint_symb(char **figure, char letter)
+static void paint_symb(char **figure, char letter)
 {
 	char **y;
 	char *x;
@@ -88,19 +88,4 @@ t_etra *reader(int fd)
 			new_chain = add_tetra(new, new_chain);
 		}
 		return (new_chain);
-}
-
-int main(int argc, char **argv)
-{
-	t_etra *chain;
-	char **map;
-	int fd;
-
-	fd = open(argv[1], O_RDONLY);
-	chain = reader(fd);
-	letters_painter(chain);
-	map = new_map(chain);
-	worker(map, chain);
-	out(map);
-	return 0;
 }

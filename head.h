@@ -42,7 +42,7 @@ typedef struct			s_try
 int						links_prove(t_list *lst);
 int						proves(t_list *chain);
 t_etra					*new_tetra(t_list *chain);
-
+t_etra *reader(int fd);
 size_t					new_tetra_number(size_t *s);
 t_etra					*create_tetra(size_t x, size_t y);
 t_etra					*add_tetra(t_etra *new, t_etra *old);
@@ -52,5 +52,6 @@ void					out(char **map);
 int t_in(size_t *arr);
 int search_not_dot(char *str);
 size_t len_without_dot(char *str);
+void letters_painter(t_etra		*tets);
 
 #endif
