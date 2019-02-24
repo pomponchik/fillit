@@ -6,20 +6,13 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 22:43:13 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/22 22:43:18 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 04:38:06 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-typedef struct			s_puter
-{
-	size_t x;
-	size_t y;
-	size_t size;
-}						t_put;
-
-int square_prove(t_put squad, t_etra *tet)
+static int		square_prove(t_put squad, t_etra *tet)
 {
 	if (squad.size < squad.x + tet->width + 1)
 		return (0);
@@ -28,16 +21,16 @@ int square_prove(t_put squad, t_etra *tet)
 	return (1);
 }
 
-void clear_square(char **map, t_etra	*tets, t_put put)
+static void		clear_square(char **map, t_etra *tets, t_put put)
 {
-	char **figure;
-	char *line;
-	size_t ys;
-	size_t xs;
+	char		**figure;
+	char		*line;
+	size_t		ys;
+	size_t		xs;
 
 	figure = tets->str;
 	ys = 0;
-	while(*figure)
+	while (*figure)
 	{
 		line = *figure;
 		xs = 0;
@@ -53,22 +46,25 @@ void clear_square(char **map, t_etra	*tets, t_put put)
 	}
 }
 
-int try_to_put(char **map, t_etra	*tets, t_put put)
+char *double_increment(size_t *i, char **str)
 {
-	char **figure;
-	char *line;
-	size_t ys;
-	size_t xs;
-	//Сначала место под фигуру и проверить, что все нужные клетки свободны
-	//если все ок, ставим фигуру и возвращаем 0
+	*i++;
+	*str++;
+	return(str[*i]);
+}
+
+static int		try_to_put(char **map, t_etra *tets, t_put put)
+{
+	char		*line;
+	size_t		ys;
+	size_t		xs;
+
 	if (!square_prove(put, tets))
 		return (0);
-	figure = tets->str;
-
 	ys = 0;
-	while(*figure)
+	while (*((char **)(tets->str)))
 	{
-		line = *figure;
+		line = *((char **)(tets->str));
 		xs = 0;
 		while (*line)
 		{
@@ -79,57 +75,20 @@ int try_to_put(char **map, t_etra	*tets, t_put put)
 				clear_square(map, tets, put);
 				return (0);
 			}
-			xs++;
-			line++;
+			double_increment(&xs, &line);
 		}
 		ys++;
-		figure++;
+		(char **)(tets->str)++;
 	}
 	return (1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// figure = tets->str;
-	//
-	// ys = 0;
-	// while(*figure && ys <= put.y)
-	// {
-	// 	line = *figure;
-	// 	xs = 0;
-	// 	while (*line && xs <= put.x)
-	// 	{
-	// 		if ()
-	// 		xs++;
-	// 		line++;
-	// 	}
-	// 	ys++;
-	// 	figure++;
-	// }
 }
 
-int algorithm(char **map, t_etra	*tets, size_t size)
+static int		algorithm(char **map, t_etra *tets, size_t size)
 {
-	t_put i;
+	t_put		i;
 
 	i.y = 0;
 	i.size = size;
-
 	if (!tets)
 		return (1);
 	while (i.y < (size - 1))
@@ -140,9 +99,7 @@ int algorithm(char **map, t_etra	*tets, size_t size)
 			if (try_to_put(map, tets, i) && algorithm(map, tets->next, size))
 				return (1);
 			else
-			{
 				clear_square(map, tets, i);
-			}
 			i.x++;
 		}
 		i.y++;
@@ -150,9 +107,9 @@ int algorithm(char **map, t_etra	*tets, size_t size)
 	return (0);
 }
 
-void worker(char **map, t_etra	*tets)
+void			worker(char **map, t_etra *tets)
 {
-	size_t size;
+	size_t		size;
 
 	size = 2;
 	while (!algorithm(map, tets, size))

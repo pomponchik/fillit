@@ -12,8 +12,6 @@
 
 #include "head.h"
 
-int i = 0;
-
 static void		horizontal_lst_check(t_list *lst, size_t *y_s)
 {
 	size_t		index;
@@ -55,19 +53,6 @@ static void		new_tetra_count_lines(t_list *lst, size_t *x_s, size_t *y_s)
 	horizontal_lst_check(lst, y_s);
 }
 
-void print_size_t(size_t *i)
-{
-	int index;
-
-	index = 0;
-	while (index != 4)
-	{
-		//printf("%lu", i[index]);
-		index++;
-	}
-	//printf("\n");
-}
-
 int tetra_indent(size_t *arr)
 {
 	int index;
@@ -83,7 +68,6 @@ static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 	size_t		index_y;
 	size_t		index_x;
 	char		**stri;
-	size_t x_count;
 	size_t y_count;
 
 	index_y = 0;
@@ -105,91 +89,20 @@ static void		tetra_copy(t_etra *new, size_t *x_s, size_t *y_s, t_list *lst)
 		index_y++;
 		lst = lst->next;
 	}
-
-
-//
-//
-// while (index_y != 4)
-// {
-// 	if (y_s[index_y])
-// 	{
-// 		index_x = 0;
-//
-// 		while (index_x != 4)
-// 		{
-// 			x_count = 0;
-// 			if (x_s[index_x])
-// 			{
-// 				stri[y_count][x_count] = ((char *)(lst->content))[index_x];
-// 				x_count++;
-// 			}
-// 			index_x++;
-// 		}
-// 		y_count++;
-// 		lst=lst->next;
-// 	}
-// 	index_y++;
-// }
-//
-
-
-
-
-
-
-	// while (index_y != 4)
-	// {
-	// 	//printf("tetra_copy while\n");
-	// 	if (y_s[index_y] && y_count)
-	// 	{
-	// 		//printf("tetra_copy if\n");
-	//
-	// 		index_x = 0;
-	// 		y_count--;
-	// 		while (index_x != 4)
-	// 		{
-	// 			printf("tetra_copy while 2, %lu\n", index_x);
-	//
-	// 			if (x_s[index_x] && x_count)
-	// 			{
-	// 				printf("if 2, x = %d, y = %d\n", (int)index_x, (int)index_y);
-	// 				stri[index_y][index_x] = ((char *)(lst->content))[index_x];
-	// 				x_count--;
-	// 			}
-	// 			index_x++;
-	// 		}
-	// 	}
-	// 	index_y++;
-	// 	lst = lst->next;
-	// }
-	//ft_print_two_dimensional_array(new->str);
 }
 
 t_etra			*new_tetra(t_list *lst)
 {
-	// ft_lst_putendl(lst);
-printf("new tetra %d\n", i++);
 	t_etra		*new;
 	size_t		x_s[4];
 	size_t		y_s[4];
-	extern int i;
 
 	if (!proves(lst))
 		return (NULL);
 	new_tetra_count_lines(lst, x_s, y_s);
-
-	printf("x: %lu%lu%lu%lu, y: %lu%lu%lu%lu\n", x_s[0], x_s[1], x_s[2], x_s[3], y_s[0], y_s[1], y_s[2], y_s[3]);
-	printf("\n");
 	if (!(new = create_tetra(new_tetra_number(x_s), new_tetra_number(y_s))))
 		return (NULL);
 	tetra_copy(new, x_s, y_s, lst);
 	new->next = NULL;
-	if (!new)
-		printf("no, sorry\n");
-	if (!ft_strlen((new->str)[0]))
-		printf("no, sorry 2\n");
-	priuuu(new->str);
-	printf("len: %lu", ft_strlen((new->str)[0]));
-	printf("\n");
 	return (new);
 }

@@ -53,26 +53,17 @@ static int	width_and_height_lst_prove(t_list *lst) //проверка, что с
 	size_t	width_counter;
 	size_t	height_counter;
 
-	//printf("return: %lu, %lu", width_counter, height_counter);
 	if (!lst)
 		return (0);
-	//printf("return: %lu, %lu", width_counter, height_counter);
 	height_counter = 0;
-	// printf("width 1\n");
 	while (lst)
 	{
-		// printf("width 2\n");
 		width_counter = ft_strlen(lst->content);
-		//printf("width 3, counter = %d, <str = %s>\n", (int)width_counter, (char *)(lst->content));
 		if (width_counter != 4 || height_counter >= 5)
 			return (0);
-		// printf("width 4\n");
 		height_counter++;
-		// printf("width 5\n");
 		lst = lst->next;
-		// printf("width 6\n");
 	}
-	//printf("return: %lu, %lu", width_counter, height_counter);
 	return (1);
 }
 

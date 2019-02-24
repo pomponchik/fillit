@@ -12,18 +12,6 @@
 
 #include "head.h"
 
-
-void priuuu(char **str)
-{
-	int index = 0;
-
-	while (str[index])
-	{
-		printf("%s\n", str[index]);
-		index++;
-	}
-}
-
 void paint_symb(char **figure, char letter)
 {
 	char **y;
@@ -76,9 +64,7 @@ t_etra *reader(int fd)
   {
     if (line && !ft_strlen(line))
     {
-					//printf("now\n");
 					lst_chain = ft_lst_turn(lst_chain);
-
 					new = new_tetra(lst_chain);
 					new_chain = add_tetra(new, new_chain);
      count = 0;
@@ -107,26 +93,14 @@ t_etra *reader(int fd)
 int main(int argc, char **argv)
 {
 	t_etra *chain;
-	int fd = open(argv[1], O_RDONLY);
+	char **map;
+	int fd;
+
+	fd = open(argv[1], O_RDONLY);
 	chain = reader(fd);
 	letters_painter(chain);
-	if (!chain)
-		printf("\nnot read\n");
-	char **popop = new_map(chain);
-
-	printf("\n_________________________________________________\n");
-	worker(popop, chain);
-	priuuu(popop);
-	printf("\n_________________________________________________\n");
-	while (chain)
-	{
-		priuuu(chain->str);
-		printf("\n");
-		if (!(chain->str))
-			printf("JJJ\n");
-		if (!((chain->str)[0]))
-			printf("HHH\n");
-		chain = chain->next;
-	}
+	map = new_map(chain);
+	worker(map, chain);
+	out(map);
 	return 0;
 }
