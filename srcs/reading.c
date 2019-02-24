@@ -38,6 +38,7 @@ static void		read_nuller_begin(t_read *i)
 	i->count = 0;
 	i->line = NULL;
 	i->new_chain = NULL;
+	i->work_indicate = 0;
 }
 
 static void		read_nuller(t_read *i)
@@ -83,8 +84,12 @@ t_etra			*reader(int fd)
 		else if (i.line && ft_strlen(i.line))
 			read_helper(&i);
 	}
+	if (!ft_strlen(i.line))
+		return (NULL);
 	if (i.count)
 	{
+		if (!proves(i.lst_chain))
+			return (0);
 		i.lst_chain = ft_lst_turn(i.lst_chain);
 		i.new = new_tetra(i.lst_chain);
 		i.new_chain = add_tetra(i.new, i.new_chain);

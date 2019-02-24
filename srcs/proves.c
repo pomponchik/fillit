@@ -59,9 +59,10 @@ static int	width_and_height_lst_prove(t_list *lst)
 	while (lst)
 	{
 		width_counter = ft_strlen(lst->content);
+		height_counter++;
 		if (width_counter != 4 || height_counter >= 5)
 			return (0);
-		height_counter++;
+
 		lst = lst->next;
 	}
 	return (1);

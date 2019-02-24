@@ -49,6 +49,7 @@ typedef struct			s_read
 	t_etra				*new;
 	t_etra				*new_chain;
 	char				*temp;
+	int work_indicate;
 }						t_read;
 
 int						links_prove(t_list *lst);
