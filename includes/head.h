@@ -13,7 +13,7 @@
 #ifndef HEAD_H
 # define HEAD_H
 
-# include "libft.h"
+# include "../Libft/includes/libft.h"
 
 typedef struct			s_tetr
 {
@@ -65,5 +65,6 @@ int						t_in(size_t *arr);
 int						search_not_dot(char *str);
 size_t					len_without_dot(char *str);
 void					letters_painter(t_etra *tets);
+void		paint_symb(char **figure, char letter);
 
 #endif

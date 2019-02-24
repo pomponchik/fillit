@@ -10,24 +10,42 @@
 #                                                                              #
 # **************************************************************************** #
 
+.PHONY: clean fclean re make all
+
+FILENAMES = main.c
+FILENAMES += algorithm.c links_prove.c new_map.c new_tetra_helpers.c
+FILENAMES += new_tetra.c output.c output_helper.c
+FILENAMES += proves.c reading.c
 NAME = fillit
-FILES = sources/*.c
-OUT = sources/*.o
-INCLUDES = sources/
 
-subsystem:
-	cd Libft/ && $(MAKE)
-	cd ..
+SRCS	=$(addprefix srcs/, $(FILENAMES))
+OBJS	=$(addprefix build/, $(FILENAMES:.c=.o))
 
-all:  subsystem
-	gcc -Wall -Werror -Wextra -c $(FILES) libft.a -I $(INCLUDES)
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	+= -I includes/
+LFLAGS	= -L ./Libft/ -lft
 
-clean:
-	/bin/rm -f $(OUT)
-	/bin/rm -f Libft/*.o
+all: $(NAME)
 
-fclean: clean
-	/bin/rm -f $(NAME)
-	/bin/rm -f Libft/libft.a
+$(NAME):$(OBJS) | lib
+	@$(CC) $(CFLAGS) -o $(NAME) $(LFLAGS) $(OBJS)
+
+build/%.o: srcs/%.c | build
+	@$(CC) $(CFLAGS) -o $@ -c $^
 
 re: fclean all
+
+lib:
+	@make -C ./Libft
+	@make clean -C ./Libft
+
+clean:
+	@rm -rf build/
+
+fclean: clean
+	@make fclean -C ./Libft
+	@rm -f $(NAME)
+
+build:
+	@mkdir build/

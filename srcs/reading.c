@@ -12,7 +12,7 @@
 
 #include "head.h"
 
-static void		paint_symb(char **figure, char letter)
+void		paint_symb(char **figure, char letter)
 {
 	char		**y;
 	char		*x;
@@ -56,6 +56,18 @@ static void		read_helper(t_read *i)
 	i->count++;
 }
 
+static int		read_helper_2(t_read *i)
+{
+	if (!proves(i->lst_chain))
+		return (0);
+	i->lst_chain = ft_lst_turn(i->lst_chain);
+	i->new = new_tetra(i->lst_chain);
+	i->new_chain = add_tetra(i->new, i->new_chain);
+	ft_lst_free_chain(i->lst_chain);
+	read_nuller(i);
+	return (1);
+}
+
 t_etra			*reader(int fd)
 {
 	t_read		i;
@@ -65,11 +77,8 @@ t_etra			*reader(int fd)
 	{
 		if (i.line && !ft_strlen(i.line))
 		{
-			i.lst_chain = ft_lst_turn(i.lst_chain);
-			i.new = new_tetra(i.lst_chain);
-			i.new_chain = add_tetra(i.new, i.new_chain);
-			ft_lst_free_chain(i.lst_chain);
-			read_nuller(&i);
+			if (!read_helper_2(&i))
+				return (NULL);
 		}
 		else if (i.line && ft_strlen(i.line))
 			read_helper(&i);
