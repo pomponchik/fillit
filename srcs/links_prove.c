@@ -35,9 +35,7 @@ static int	links_prove_helper(t_list *lst, size_t x, size_t y)
 		count += str_links_prove(ft_lstsearch_index(lst, y), (x - 1));
 	if (x != 3)
 		count += str_links_prove(ft_lstsearch_index(lst, y), (x + 1));
-	if (count)
-		return (1);
-	return (0);
+	return (count);
 }
 
 int			links_prove(t_list *lst)
@@ -45,9 +43,11 @@ int			links_prove(t_list *lst)
 	size_t	x;
 	size_t	y;
 	t_list	*temp;
+	size_t links;
 
 	y = 0;
 	temp = lst;
+	links = 0;
 	while (y != 4)
 	{
 		x = 0;
@@ -55,7 +55,7 @@ int			links_prove(t_list *lst)
 		{
 			if (((char *)(temp->content))[x] == '#')
 			{
-				if (!links_prove_helper(lst, x, y))
+				if (!(links += links_prove_helper(lst, x, y)))
 					return (0);
 			}
 			x++;
@@ -63,5 +63,7 @@ int			links_prove(t_list *lst)
 		y++;
 		temp = temp->next;
 	}
-	return (1);
+	if (links > 5)
+		return (1);
+	return (0);
 }
