@@ -6,15 +6,29 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 06:58:55 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 06:23:26 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 07:09:09 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int t_in(size_t *arr)
+void		letters_painter(t_etra *tets)
 {
-	int index;
+	char	letter;
+
+	letter = 'A';
+	while (tets)
+	{
+		paint_symb(tets->str, letter);
+		tets->letter = letter;
+		letter++;
+		tets = tets->next;
+	}
+}
+
+int			t_in(size_t *arr)
+{
+	int		index;
 
 	index = 0;
 	while (!arr[index])

@@ -6,17 +6,17 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 06:42:17 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 06:42:19 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/24 06:48:31 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_etra *chain;
-	char **map;
-	int fd;
+	t_etra	*chain;
+	char	**map;
+	int		fd;
 
 	fd = open(argv[1], O_RDONLY);
 	chain = reader(fd);
@@ -24,5 +24,5 @@ int main(int argc, char **argv)
 	map = new_map(chain);
 	worker(map, chain);
 	out(map);
-	return 0;
+	return (0);
 }
