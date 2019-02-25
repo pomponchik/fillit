@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:50:11 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/20 06:24:48 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:33:54 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,13 @@ int			links_prove(t_list *lst)
 		y++;
 		temp = temp->next;
 	}
+	return (ft_return(links));
+}
+
+int			ft_return(size_t links)
+{
 	if (links > 5)
 		return (1);
-	return (0);
+	else
+		return (0);
 }
