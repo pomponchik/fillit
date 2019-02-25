@@ -6,30 +6,11 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 21:47:18 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 07:06:27 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:30:34 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
-
-void		paint_symb(char **figure, char letter)
-{
-	char		**y;
-	char		*x;
-
-	y = figure;
-	while (*y)
-	{
-		x = y[0];
-		while (*x)
-		{
-			if (*x == '#')
-				*x = letter;
-			x++;
-		}
-		y++;
-	}
-}
 
 static void		read_nuller_begin(t_read *i)
 {

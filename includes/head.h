@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 21:47:02 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 07:12:06 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:42:29 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct			s_read
 	t_etra				*new;
 	t_etra				*new_chain;
 	char				*temp;
-	int work_indicate;
+	int					work_indicate;
 }						t_read;
 
 int						links_prove(t_list *lst);
@@ -66,6 +66,8 @@ int						t_in(size_t *arr);
 int						search_not_dot(char *str);
 size_t					len_without_dot(char *str);
 void					letters_painter(t_etra *tets);
-void		paint_symb(char **figure, char letter);
+void					paint_symb(char **figure, char letter);
+int						ft_check(int fd, int argc);
+int						ft_return(size_t links);
 
 #endif

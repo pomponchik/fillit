@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:34:23 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/20 05:38:34 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:47:11 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ static int	width_and_height_lst_prove(t_list *lst)
 	{
 		width_counter = ft_strlen(lst->content);
 		height_counter++;
-		if (width_counter != 4 || height_counter >= 5)
+		if (width_counter != 4)
 			return (0);
-
 		lst = lst->next;
 	}
+	if (height_counter != 4)
+		return (0);
 	return (1);
 }
 

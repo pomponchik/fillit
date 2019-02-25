@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 06:42:17 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 06:48:31 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:38:30 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ int			main(int argc, char **argv)
 	char	**map;
 	int		fd;
 
-	if (argc != 2)
-	{
-		ft_putstr_fd("usage: fillit target\n", 1);
-		exit(1);
-	}
 	fd = open(argv[1], O_RDONLY);
-	if (fd <= 0)
+	if (ft_check(fd, argc) < 1)
 	{
-		ft_putstr_fd("usage: fillit target\n", 1);
+		if (ft_check(fd, argc) == -1)
+			ft_putstr_fd("usage: fillit target\n", 1);
+		else
+			ft_putstr_fd("error\n", 1);
 		exit(1);
 	}
 	chain = reader(fd);
