@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:50:11 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/25 21:33:54 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/02/25 21:46:48 by qclubfoo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			links_prove(t_list *lst)
 	size_t	x;
 	size_t	y;
 	t_list	*temp;
-	size_t links;
+	size_t	links;
 
 	y = 0;
 	temp = lst;
