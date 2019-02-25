@@ -6,7 +6,7 @@
 #    By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/24 07:18:31 by ahalmon-          #+#    #+#              #
-#    Updated: 2019/02/24 07:18:33 by ahalmon-         ###   ########.fr        #
+#    Updated: 2019/02/25 21:44:25 by qclubfoo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 FILENAMES = main.c
 FILENAMES += algorithm.c links_prove.c new_map.c new_tetra_helpers.c
 FILENAMES += new_tetra.c output.c output_helper.c
-FILENAMES += proves.c reading.c
+FILENAMES += proves.c reading.c ft_check.c
 NAME = fillit
 
 SRCS	=$(addprefix srcs/, $(FILENAMES))
