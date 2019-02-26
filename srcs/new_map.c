@@ -6,11 +6,30 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 21:01:29 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 06:22:44 by ahalmon-         ###   ########.fr       */
+/*   Updated: 2019/02/26 06:06:21 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+void			paint_symb(char **figure, char letter)
+{
+	char		**y;
+	char		*x;
+
+	y = figure;
+	while (*y)
+	{
+		x = y[0];
+		while (*x)
+		{
+			if (*x == '#')
+				*x = letter;
+			x++;
+		}
+		y++;
+	}
+}
 
 static size_t	ft_math_degree_size_t(size_t num, size_t index)
 {

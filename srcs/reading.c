@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 21:47:18 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/25 21:30:34 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/02/24 07:06:27 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void		read_nuller_begin(t_read *i)
 	i->count = 0;
 	i->line = NULL;
 	i->new_chain = NULL;
-	i->work_indicate = 0;
 }
 
 static void		read_nuller(t_read *i)

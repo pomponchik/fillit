@@ -6,13 +6,13 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 05:50:11 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/25 21:46:48 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/02/26 06:03:28 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-static int	str_links_prove(t_list *lst, size_t x)
+static int		str_links_prove(t_list *lst, size_t x)
 {
 	char	*str;
 
@@ -22,7 +22,7 @@ static int	str_links_prove(t_list *lst, size_t x)
 	return (0);
 }
 
-static int	links_prove_helper(t_list *lst, size_t x, size_t y)
+static int		links_prove_helper(t_list *lst, size_t x, size_t y)
 {
 	size_t	count;
 
@@ -38,16 +38,21 @@ static int	links_prove_helper(t_list *lst, size_t x, size_t y)
 	return (count);
 }
 
-int			links_prove(t_list *lst)
+static void		links_prove_nuller(size_t *a, size_t *b)
+{
+	*a = 0;
+	*b = 0;
+}
+
+int				links_prove(t_list *lst)
 {
 	size_t	x;
 	size_t	y;
 	t_list	*temp;
 	size_t	links;
 
-	y = 0;
 	temp = lst;
-	links = 0;
+	links_prove_nuller(&y, &links);
 	while (y != 4)
 	{
 		x = 0;
@@ -63,13 +68,7 @@ int			links_prove(t_list *lst)
 		y++;
 		temp = temp->next;
 	}
-	return (ft_return(links));
-}
-
-int			ft_return(size_t links)
-{
 	if (links > 5)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

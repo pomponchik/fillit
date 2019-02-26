@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   prove_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 06:42:17 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/24 06:48:31 by ahalmon-         ###   ########.fr       */
+/*   Created: 2019/02/26 05:34:07 by ahalmon-          #+#    #+#             */
+/*   Updated: 2019/02/26 06:04:05 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int			main(int argc, char **argv)
+int			is_it_empty_file(char *file_name)
 {
-	t_etra	*chain;
-	char	**map;
 	int		fd;
 
-	if (argc != 2)
+	fd = open(file_name, O_RDONLY);
+	if (fd <= 0)
 	{
-		ft_putstr_fd("usage: fillit target\n", 1);
-		exit(1);
+		ft_putstr("usage: fillit target\n");
+		close(fd);
+		return (0);
 	}
-	fd = open(argv[1], O_RDONLY);
-	if (!is_it_empty_file(argv[1]))
-		exit(1);
-	chain = reader(fd);
-	if (!chain)
+	if (!read(fd, NULL, 1))
 	{
-		ft_putstr_fd("error\n", 1);
-		exit(1);
+		ft_putstr("error\n");
+		close(fd);
+		return (0);
 	}
-	letters_painter(chain);
-	map = new_map(chain);
-	worker(map, chain);
-	out(map);
-	return (0);
+	close(fd);
+	return (1);
 }

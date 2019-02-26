@@ -6,7 +6,7 @@
 /*   By: ahalmon- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 21:47:02 by ahalmon-          #+#    #+#             */
-/*   Updated: 2019/02/25 21:42:29 by qclubfoo         ###   ########.fr       */
+/*   Updated: 2019/02/26 05:58:05 by ahalmon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEAD_H
 
 # include "../Libft/includes/libft.h"
+# include <stdio.h>
 
 typedef struct			s_tetr
 {
@@ -49,7 +50,6 @@ typedef struct			s_read
 	t_etra				*new;
 	t_etra				*new_chain;
 	char				*temp;
-	int					work_indicate;
 }						t_read;
 
 int						links_prove(t_list *lst);
@@ -67,7 +67,6 @@ int						search_not_dot(char *str);
 size_t					len_without_dot(char *str);
 void					letters_painter(t_etra *tets);
 void					paint_symb(char **figure, char letter);
-int						ft_check(int fd, int argc);
-int						ft_return(size_t links);
+int						is_it_empty_file(char *file_name);
 
 #endif
