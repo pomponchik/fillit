@@ -13,7 +13,7 @@
 #ifndef HEAD_H
 # define HEAD_H
 
-# include "../Libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include <stdio.h>
 
 typedef struct			s_tetr
