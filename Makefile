@@ -24,7 +24,7 @@ OBJS	=$(addprefix build/, $(FILENAMES:.c=.o))
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 CFLAGS	+= -I includes/
-LFLAGS	= -L ./libft/ -lft
+LFLAGS	= -L ./Libft/ -lft
 
 all: $(NAME)
 
@@ -37,14 +37,14 @@ build/%.o: srcs/%.c | build
 re: fclean all
 
 lib:
-	@make -C ./libft
-	@make clean -C ./libft
+	@make -C ./Libft
+	@make clean -C ./Libft
 
 clean:
 	@rm -rf build/
 
 fclean: clean
-	@make fclean -C ./libft
+	@make fclean -C ./Libft
 	@rm -f $(NAME)
 
 build:
